@@ -16,11 +16,7 @@ module.exports = {
         "revert",
       ],
     ],
-    "subject-case": [
-      2,
-      "always",
-      ["start-case"], // Title Case (e.g., Add Login Button)
-    ],
+    "subject-case": [0],
     "subject-full-stop": [2, "never", "."], // No dot at the end of the subject
   },
 };
