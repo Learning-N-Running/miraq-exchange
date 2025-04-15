@@ -3,28 +3,33 @@ import prisma from "../prisma/client";
 import bcrypt from "bcrypt";
 import { signJwt } from "../utils/jwt";
 
-export const register = async (req: Request, res: Response) => {
-  const { email, password } = req.body;
+export const register = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { email, password } = req.body;
 
-  if (!email || !password) {
-    return res.status(400).json({ error: "Email and password are required" });
+    if (!email || !password) {
+      res.status(400).json({ error: "Email and password are required" });
+      return;
+    }
+
+    const existingUser = await prisma.user.findUnique({ where: { email } });
+    if (existingUser) {
+      res.status(400).json({ error: "Email already registered" });
+      return;
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const user = await prisma.user.create({
+      data: {
+        email,
+        password: hashedPassword,
+      },
+    });
+
+    const token = signJwt({ userId: user.id });
+    res.status(201).json({ token });
+  } catch (error) {
+    res.status(500).json({ error: "Internal Server error" });
   }
-
-  const existingUser = await prisma.user.findUnique({ where: { email } });
-  if (existingUser) {
-    return res.status(400).json({ error: "Email already registered" });
-  }
-
-  const hashedPassword = await bcrypt.hash(password, 10);
-
-  const user = await prisma.user.create({
-    data: {
-      email,
-      password: hashedPassword,
-    },
-  });
-
-  const token = signJwt({ userId: user.id });
-
-  return res.status(200).json({ token });
 };
