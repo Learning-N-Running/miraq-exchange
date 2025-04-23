@@ -30,6 +30,7 @@ export const register = async (req: Request, res: Response): Promise<void> => {
     const token = signJwt({ userId: user.id });
     res.status(201).json({ token });
   } catch (error) {
+    console.error("❌ REGISTER ERROR:", error); // 👈 로그 찍기
     res.status(500).json({ error: "Internal Server error" });
   }
 };
