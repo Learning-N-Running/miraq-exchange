@@ -1,84 +1,62 @@
-# Turborepo starter
+# Miraq Exchange
 
-This Turborepo starter is maintained by the Turborepo core team.
+> **Note on Branches**  
+> All feature development happens in the `dev` branch.  
+> The `main` branch only contains stable, production-ready code.  
+> Please check the `dev` branch for the latest development updates.
 
-## Using this example
+---
 
-Run the following command:
+**Miraq Exchange** is a full-stack implementation of a centralized cryptocurrency trading platform (CEX).  
+It aims to simulate the real-world architecture and features of production-grade exchanges, including authentication, asset management, and order systems.
 
-```sh
-npx create-turbo@latest
-```
+This project is designed to deepen hands-on understanding of backend infrastructure, database modeling, JWT-based authentication, and frontend integration.
 
-## What's inside?
+---
 
-This Turborepo includes the following packages/apps:
+## 🔧 Tech Stack
 
-### Apps and Packages
+| Layer         | Tech                             |
+|---------------|----------------------------------|
+| Frontend      | Next.js (App Router), TypeScript, Tailwind CSS |
+| State Mgmt    | Zustand                          |
+| Backend       | Node.js, Express.js, TypeScript  |
+| Auth          | JWT, Bcrypt                      |
+| Database      | PostgreSQL, Prisma ORM           |
+| DevOps        | Docker, TurboRepo, Vercel        |
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+---
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
+## 📁 Project Structure
 
 ```
-cd my-turborepo
-pnpm build
+/apps
+  ├── frontend   # Web interface using Next.js
+  └── backend    # Express server with API and database access
+
+/packages
+  └── shared     # (optional) Shared utilities and config
 ```
 
-### Develop
+---
 
-To develop all apps and packages, run the following command:
+## 🚧 Development Workflow
 
-```
-cd my-turborepo
-pnpm dev
-```
+- All new features are developed in feature branches and merged into `dev`.
+- Only stable and production-ready code is merged into `main`.
 
-### Remote Caching
+---
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+## 🔜 Upcoming Features
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+- Login & session management  
+- Real-time order book using WebSocket  
+- Trade execution & matching engine  
+- Admin dashboard
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+---
 
-```
-cd my-turborepo
-npx turbo login
-```
+## 📌 Note
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/docs/reference/command-line-reference)
+This is a solo project to demonstrate full-stack Web3 & CEX development skills for portfolio purposes.  
+PRs and commits follow conventional commit standards.
